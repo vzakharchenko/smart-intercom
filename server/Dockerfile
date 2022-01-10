@@ -13,6 +13,7 @@ RUN npm i pm2 -g
 RUN npm i intercom-server@1.0.1 -g
 COPY entrypoint.sh /opt/entrypoint.sh
 RUN  chmod +x /opt/entrypoint.sh
-EXPOSE 5000
+EXPOSE 8099
+EXPOSE 8098
 ENTRYPOINT ["/opt/entrypoint.sh"]
 #CMD [ "pm2-runtime", "start", "pm2.json" ]
