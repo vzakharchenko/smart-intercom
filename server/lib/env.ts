@@ -5,6 +5,7 @@ export type ConfigServer = {
 }
 export type ConfigSmartthings = {
     port:number,
+    timeout:number,
     deviceIp?:string,
     appId?:string,
     secret?:string
@@ -32,7 +33,8 @@ export async function config(): Promise<ConfigJson> {
             'https://graph-ap02-apnortheast2.api.smartthings.com',
         ],
         smartthings:{
-            port:8098
+            port:8098,
+            timeout:180000,
         }
     };
     const defaultConfigFile = `${process.env.HOME}/config/intercomConfig.json`;
@@ -72,8 +74,12 @@ export async function config(): Promise<ConfigJson> {
     }
     if (!configJson.smartthings) {
         configJson.smartthings = {
-            port:8098
+            port:8098,
+            timeout:180000,
         };
+    }
+    if (!configJson.smartthings.timeout){
+        configJson.smartthings.timeout=180000;
     }
     if (!configJson.smartapp) {
         configJson.smartapp = [

@@ -23,7 +23,7 @@ export async function startApplication() {
       const rc = await config();
       const deviceIp = rc.smartthings.deviceIp;
       try {
-        await fetchData(`http://${deviceIp}/open?timeout=180000`);
+        await fetchData(`http://${deviceIp}/open?timeout=${rc.smartthings.timeout}`);
       } catch (e:any) {
         console.log(e.message, e)
         res.end(JSON.stringify({ status: 'FAIL', message: e.message }));
