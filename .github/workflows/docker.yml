@@ -34,4 +34,4 @@ jobs:
           push: true
           tags: |
             vassio/smart-intercom:latest
-            vassio/smart-intercom:1.0.2
+            vassio/smart-intercom:1.0.3
