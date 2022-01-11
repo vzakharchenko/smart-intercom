@@ -23,9 +23,23 @@
 # Wemos D1 mini firmware
 
 - Download firmware from https://github.com/vzakharchenko/smart-intercom/releases
+```bash
+sudo apt-get install -y esptool
+esptool --port /dev/ttyUSB0 write_flash --flash_size=detect -fm dout 0x0 intercom.ino.d1_mini.bin
 ```
-todo
+
+# First time configuration
+- Connect to WiFi network "IntercomAP" and setup connection to your WiFi network
+
+# Rest Api
+## activate relay and wait for someone to call the intercom, then open the door
+- endpoint
 ```
+http://<DEVICE_IP>/open?timeout=30000
+```
+
+where
+ - **timeout** - how many time (in millisecond) wait for the call(default 30sec)
 
 # Smartthings Integration
  [Smartthings Integration](./smartthings-intercom)
