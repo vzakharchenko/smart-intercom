@@ -2,10 +2,10 @@
 
 ## Installation Steps
 
-1. Custom Device Handler installation
-2. SmartApp installation
-3. Server Installation
-4. add smartapp to your location using phone application or web portal
+1. [Custom Device Handler installation](./#custom-device-handler-installation)
+2. [SmartApp installation](./#smartapp-installation)
+3. [Server Installation](./server)
+4. [add smartapp to your location using phone application or web portal](./#added-smartapp-to-your-location)
 
 ## Custom Device Handler installation
 1. open [https://graph.api.smartthings.com/location/list](https://graph.api.smartthings.com/location/list)

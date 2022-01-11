@@ -15,5 +15,16 @@
 # Connection diagram
 ![](/docs/intercom.drawio.png)
 
+# Wemos D1 mini firmware
+
+- Download firmware from https://github.com/vzakharchenko/smart-intercom/releases
+```
+todo
+```
+
+# Smartthings Integration
+ [Smartthings Integration](./smartthings-intercom)
+
+
 
 

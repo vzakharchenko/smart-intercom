@@ -3,8 +3,8 @@
 ## Before Install Server
 - Create a device according to the [scheme](https://github.com/vzakharchenko/smart-intercom)
 ![](https://github.com/vzakharchenko/smart-intercom/raw/master/docs/intercom.drawio.png)
-- install [Custom Device Handler](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom)
-- install [Smartapp](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom)
+- install [Custom Device Handler](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom#custom-device-handler-installation)
+- install [Smartapp](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom#smartapp-installation)
 
 ## Server setup using Docker
 - Docker Installation:
@@ -54,5 +54,5 @@ sudo pm2 save
 ```
 where
 - DEVICE_IP - IP address of WEMOS D1 mini
-- APPLICATION_ID - [Application ID](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom)
-- APPLICATION_SECRET - [Application Secret](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom)
+- APPLICATION_ID - [Application ID](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom#how-to-get-application-id-and-secret)
+- APPLICATION_SECRET - [Application Secret](https://github.com/vzakharchenko/smart-intercom/tree/master/smartthings-intercom#how-to-get-application-id-and-secret)
