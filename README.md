@@ -1,6 +1,6 @@
-# smartthings-intercom
+# smart-intercom
 
-- Description: Remotely open an apartment intercom (Cyfral, Visit or similar) using Samsung Smartthings
+- Description: Remotely open an apartment intercom (Cyfral, Visit or similar)
 
 # Required Electronic Components
  - WeMos D1 Mini ($2.03). [AliExpress](https://aliexpress.com/item/32630518881.html?sku_id=12000018628049611&spm=a2g2w.productlist.0.0.33f717d28p4yT3)
@@ -15,24 +15,5 @@
 # Connection diagram
 ![](/docs/intercom.drawio.png)
 
-## Server setup using Docker
-- Docker Installation:
-```bash
-docker run -d --name=smartthings-intercom  -p 8099:8099 -p 8098:8098 --restart=always vassio/smartthings-intercom:latest
-```
-- Docker Installation with configuration out:
-```bash
-echo "{}"> /opt/config/intercom/intercomConfig.json
-docker run -d --name=smartthings-intercom  -p 8099:8099 -p 8098:8098 -v /opt/config/intercom/intercomConfig.json:/opt/config/intercom/intercomConfig.json --restart=always vassio/smartthings-intercom:latest
-```
-## Manual Server setup
- - required Node 12.x or upper
-```bash
-sudo npm i pm2 -g
-sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u ${currentUser} --hp ${HOME}
-sudo npm i intercom-server -g
-sudo pm2 start `npm root -g`/ intercom-server/index.js
-sudo pm2 save
-```
 
 

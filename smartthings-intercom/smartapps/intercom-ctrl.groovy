@@ -1,7 +1,7 @@
 /**
- *  remote-ctrl-gsm
+ *  intercom-app
  *
- *  Copyright 2021 Vasyl Zakharchenko
+ *  Copyright 2022 Vasyl Zakharchenko
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -25,24 +25,46 @@ definition(
 
 
 preferences {
-    section("Setup my server with this IP") {
-        input "IP", "text", multiple: false, required: true
+    page(name: "config", content: "config", install: true, uninstall: true)
+}
+
+def config() {
+    def device = getAllDevicesById("intercom");
+
+    dynamicPage(name: "config", title: " intercom app Manager") {
+
+        section("Setup my server with this IP") {
+            input "IP", "text", multiple: false, required: true
+        }
+        section("Setup my server with this IP") {
+            input "deviceIp", "text", multiple: false, required: true
+        }
+        section("Setup my device with this server Port") {
+            input "serverPort", "number", multiple: false, required: true
+        }
+        section("Setup my device with this Smartthings Port") {
+            input "port", "number", multiple: false, required: true
+        }
+        section("Setup my devices with smartthings hub (optional)") {
+            input "hub", "capability.hub", multiple: false, required: false
+        }
+        section("Setup my devices without cloud") {
+            input(name: "withoutCloud", type: 'bool', required: false, defaultValue:false)
+        }
+
+        section("Server info") {
+            if (state.accessToken && device) {
+                paragraph "id=${device.id}"
+                paragraph "appId=${app.id}"
+                paragraph "secret=${state.accessToken}"
+            }
+        }
     }
-    section("Setup my server with this IP") {
-        input "deviceIp", "text", multiple: false, required: true
-    }
-    section("Setup my device with this server Port") {
-        input "serverPort", "number", multiple: false, required: true
-    }
-    section("Setup my device with this Smartthings Port") {
-        input "port", "number", multiple: false, required: true
-    }
-    section("Setup my devices with smartthings hub (optional)") {
-        input "hub", "capability.hub", multiple: false, required: false
-    }
-    section("Setup my devices without cloud") {
-        input(name: "withoutCloud", type: 'bool', required: false, defaultValue:false)
-    }
+
+}
+
+preferences {
+
 }
 
 def installed() {

@@ -1,7 +1,6 @@
 import { deviceInit } from './smartthingsConnection';
 import {startApplication} from "./ServiceBackend";
-
-const { config, saveConfig } = require('../env');
+import { config, saveConfig } from '../env';
 
 
 export type SuccessCallback = (currentShard:string)=>Promise<void>|void;

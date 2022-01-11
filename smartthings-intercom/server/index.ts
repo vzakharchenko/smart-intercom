@@ -23,12 +23,12 @@ config().then(async (currentConfig:ConfigJson) => {
   server.use(bodyParser.json());
   server.use(cors(corsOptions));
 
-  server.get('/health', (req, res) => {
+  server.get('/health', (req:any, res:any) => {
     const status = {status: 'OK'};
     res.send(JSON.stringify(status));
   });
 
-  server.get('/registerDevice', async (req, res) => {
+  server.get('/registerDevice', async (req:any, res:any) => {
     res.writeHead(200, {'Content-Type': 'application/json'});
     await saveSmartThingDeviceInfo(req, res);
   });
