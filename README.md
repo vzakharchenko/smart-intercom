@@ -2,6 +2,11 @@
 
 - Description: Remotely open an apartment intercom (Cyfral, Visit or similar)
 
+## Features
+ - When the device is inactive or turned off, it does not interfere with the operation of the intercom
+ - Can be integrated with various types of smart home systems
+ - Integrated with [Samsung Smartthings](./smartthings-intercom)
+
 # Required Electronic Components
  - WeMos D1 Mini ($2.03). [AliExpress](https://aliexpress.com/item/32630518881.html?sku_id=12000018628049611&spm=a2g2w.productlist.0.0.33f717d28p4yT3)
  - 1 channel relay module Delay Disconnection Triggers Delayed Cycle Timing Circuit Switch XY-J02 (2.32$). [AliExpress](https://aliexpress.com/item/4000372163113.html?sku_id=10000001523783321&spm=a2g2w.productlist.0.0.232c5991ZEe6Ny)
