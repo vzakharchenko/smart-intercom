@@ -33,5 +33,5 @@ jobs:
           platforms: linux/amd64,linux/arm64, linux/arm/v7
           push: true
           tags: |
-            vassio/smart-intercom:latest
-            vassio/smart-intercom:1.0.3
+            vassio/smartthings-intercom:latest
+            vassio/smartthings-intercom:1.0.3

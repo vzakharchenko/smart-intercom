@@ -9,12 +9,12 @@
 ## Server setup using Docker
 - Docker Installation:
 ```bash
-docker run -d --name=smart-intercom  -p 8099:8099 -p 8098:8098 --restart=always vassio/smart-intercom:latest
+docker run -d --name=smartthings-intercom  -p 8099:8099 -p 8098:8098 --restart=always vassio/smartthings-intercom:latest
 ```
 - Docker Installation with configuration out:
 ```bash
 echo "{}"> /opt/config/intercom/intercomConfig.json
-docker run -d --name=smart-intercom  -p 8099:8099 -p 8098:8098 -v /opt/config/intercom/intercomConfig.json:/opt/config/intercom/intercomConfig.json --restart=always vassio/smart-intercom:latest
+docker run -d --name=smartthings-intercom  -p 8099:8099 -p 8098:8098 -v /opt/config/intercom/intercomConfig.json:/opt/config/intercom/intercomConfig.json --restart=always vassio/smartthings-intercom:latest
 ```
 
 ## Manual Server setup
