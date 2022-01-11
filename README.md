@@ -1,5 +1,11 @@
 # smart-intercom
 
+- [![docker](https://github.com/vzakharchenko/smart-intercom/actions/workflows/docker.yml/badge.svg)](https://github.com/vzakharchenko/smart-intercom/actions/workflows/docker.yml)
+- [![Node.js CI](https://github.com/vzakharchenko/smart-intercom/actions/workflows/node.yml/badge.svg)](https://github.com/vzakharchenko/smart-intercom/actions/workflows/node.yml)
+- ![npm](https://img.shields.io/npm/v/intercom-server?label=intercom-server)
+- ![GitHub release (latest by date)](https://img.shields.io/github/v/release/vzakharchenko/smart-intercom?style=for-the-badge)
+- ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/vassio/smartthings-intercom?arch=amd64&label=Docker)
+
 - Description: Remotely open an apartment intercom (Cyfral, Visit or similar)
 
 ## Features
