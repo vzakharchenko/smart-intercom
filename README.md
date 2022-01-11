@@ -16,9 +16,9 @@
 ![](/docs/intercom.drawio.png)
 
 # XY-J02 settings
-Operating Mode: P.2
-OP: 2 sec
-CL: 4 sec
+- **Operating Mode**: P.2
+- **OP**: 2 sec
+- **CL**: 4 sec
 
 # Wemos D1 mini firmware
 
