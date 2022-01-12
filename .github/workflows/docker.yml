@@ -34,4 +34,4 @@ jobs:
           push: true
           tags: |
             vassio/smartthings-intercom:latest
-            vassio/smartthings-intercom:1.0.3
+            vassio/smartthings-intercom:1.0.4

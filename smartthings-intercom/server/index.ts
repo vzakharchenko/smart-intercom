@@ -5,6 +5,8 @@ import bodyParser from 'body-parser';
 import {saveConfig, config, ConfigJson} from './lib/env';
 import {saveSmartThingDeviceInfo} from "./lib/smartthings/registerDevice";
 import {startApplication} from "./lib/smartthings/ServiceBackend";
+import {findSSDP} from "./lib/ssdpConnection";
+import {installCrons} from "./lib/cronConnection";
 
 const corsOptions = {
   origin(o:any, callback:any) {
@@ -36,7 +38,13 @@ config().then(async (currentConfig:ConfigJson) => {
   server.listen(port, () => {
     console.info(`HTTP intercom listening on port ${port}`);
   });
-
+  const deviceIp = await findSSDP();
+  if (currentConfig.smartthings.deviceIp !== deviceIp) {
+    // @ts-ignore
+    currentConfig.smartthings.deviceIp = deviceIp;
+    await saveConfig(currentConfig);
+  }
+  await installCrons();
   await startApplication();
 }).catch((e:any) => {
   throw new Error(`Configuration issue ${e}`);

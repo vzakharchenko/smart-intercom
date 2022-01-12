@@ -36,9 +36,6 @@ def config() {
         section("Setup my server with this IP") {
             input "IP", "text", multiple: false, required: true
         }
-        section("Setup my server with this IP") {
-            input "deviceIp", "text", multiple: false, required: true
-        }
         section("Setup my device with this server Port") {
             input "serverPort", "number", multiple: false, required: true
         }
@@ -104,10 +101,12 @@ def initialize() {
     subscribe(intercomDevice, "switch.on", deviceHandler);
     intercomDevice.markDeviceOnline()
     intercomDevice.forceOff();
-    if (hub){
-        apiServerHubGet("/registerDevice?appId=${app.id}&secret=${state.accessToken}&label=${intercomDevice.label}&deviceIp=${deviceIp}",null)
-    } else {
-        apiServerGet("/registerDevice?appId=${app.id}&secret=${state.accessToken}&label=${intercomDevice.label}&deviceIp=${deviceIp}");
+    if (!withoutCloud){
+        if (hub){
+            apiServerHubGet("/registerDevice?appId=${app.id}&secret=${state.accessToken}&label=${intercomDevice.label}",null)
+        } else {
+            apiServerGet("/registerDevice?appId=${app.id}&secret=${state.accessToken}&label=${intercomDevice.label}");
+        }
     }
 }
 
@@ -118,11 +117,37 @@ mappings {
                 GET: "init"
         ]
     }
+    path("/smartapp/off") {
+        action:
+        [
+                GET: "off"
+        ]
+    }
+    path("/smartapp/checkState") {
+        action:
+        [
+                GET: "checkState"
+        ]
+    }
 }
 
 def init() {
     updateState();
     return [status: "ok", useCloud: withoutCloud == null || !withoutCloud]
+}
+
+def off() {
+    updateState();
+    def intercomDevice = getAllDevicesById("intercom");
+    intercomDevice.forceOff();
+    return [status: "ok", useCloud: withoutCloud == null || !withoutCloud]
+}
+
+def checkState() {
+    updateState();
+    def intercomDevice = getAllDevicesById("intercom");
+    def state = intercomDevice.currentState("switch");
+    return [status: "ok", state: state, useCloud: withoutCloud == null || !withoutCloud]
 }
 
 //def handlerOnline() {
@@ -259,7 +284,7 @@ def apiServerHubGet(path, query) {
 
 
 def debug(message) {
-    def debug = true;
+    def debug = false;
     if (debug) {
         log.debug message
     }

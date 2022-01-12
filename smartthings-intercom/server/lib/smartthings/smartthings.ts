@@ -2,10 +2,19 @@ import {fetchData, sendData} from '../restCalls';
 
 const apiGateWay = (shard: string) => `${shard}/api/smartapps/installations/`;
 const apiSmartAppOff = () => '/smartapp/off?access_token=';
+const apiSmartAppCheckState= () => '/smartapp/checkState?access_token=';
 const apiGateWayInitUrl = () => '/smartapp/init?access_token=';
 
 export async function smartAppOff(shard: string, appId: string, secret: string): Promise<any> {
     const url = `${apiGateWay(shard)}${appId}${apiSmartAppOff()}${secret}`;
+    const ret = await fetchData(
+        url,
+        'GET',
+    );
+    return JSON.parse(ret.data);
+}
+export async function smartAppCheckState(shard: string, appId: string, secret: string): Promise<any> {
+    const url = `${apiGateWay(shard)}${appId}${apiSmartAppCheckState()}${secret}`;
     const ret = await fetchData(
         url,
         'GET',

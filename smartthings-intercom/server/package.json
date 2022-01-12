@@ -1,6 +1,6 @@
 {
   "name": "intercom-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "intercom server",
   "main": "index.js",
   "scripts": {
@@ -27,8 +27,10 @@
   "devDependencies": {
     "@shopify/eslint-plugin": "^41.0.1",
     "@types/cors": "^2.8.12",
+    "@types/cron": "^1.7.3",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.8",
+    "@types/node-ssdp": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "eslint": "*",
     "eslint-config-airbnb": "*",
@@ -41,6 +43,8 @@
     "axios": "*",
     "body-parser": "*",
     "cors": "^2.8.5",
-    "express": "*"
+    "cron": "^1.8.2",
+    "express": "*",
+    "node-ssdp": "^4.0.1"
   }
 }

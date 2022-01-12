@@ -40,15 +40,18 @@ esptool --port /dev/ttyUSB0 write_flash --flash_size=detect -fm dout 0x0 interco
 # First time configuration
 - Connect to WiFi network "IntercomAP" and setup connection to your WiFi network
 
+# Application configuration
+![](./docs/intercom19.png)
+- **Gpio number** - the gpio number that connects to the relay signal
+- **Gpio Level** - relay signal level: HIGH/LOW
+- **Timeout seconds** - how many time (in second) wait for the intercom call
+
 # Rest Api
 ## activate relay and wait for someone to call the intercom, then open the door
 - endpoint
 ```
-http://<DEVICE_IP>/open?timeout=30000
+http://<DEVICE_IP>/open
 ```
-
-where
- - **timeout** - how many time (in millisecond) wait for the call(default 30sec)
 
 # Smartthings Integration
  [Smartthings Integration](./smartthings-intercom)

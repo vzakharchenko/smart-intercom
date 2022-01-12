@@ -31,6 +31,7 @@
     "no-return-await": 0,
     "no-process-env": 0,
     "require-await": 0,
-    "no-console": 0
+    "no-console": 0,
+    "@typescript-eslint/ban-ts-comment": 0
   }
 }

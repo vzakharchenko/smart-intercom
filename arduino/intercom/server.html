@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div style="text-align: center;">
+    <h1>Intercom Settings</h1><br>
+    <form action="/config">
+        <label for="fgpio">Gpio number</label><br>
+        <input type="number" id="fgpio" name="fgpio" value='GPIO_NUMBER' min="1"><br>
+        <label for="level">Gpio Level:</label><br>
+        <select id="level" name="level" size="1"><br>
+            <option SELECTED_HIGH value="HIGH">HIGH</option><br>
+            <option SELECTED_LOW value="LOW">LOW</option><br>
+        </select><br>
+        <label for="ftimeout">default Timeout(seconds)</label><br>
+        <input type="number" id="ftimeout" name="ftimeout" value='GPIO_TIMEOUT' min="1"><br>
+        <input type="submit" value="Save"><br>
+    </form>
+    <hr>
+    <a href="https://github.com/vzakharchenko/smart-intercom">https://github.com/vzakharchenko/smart-intercom</a>
+</div>
+
+</body>
+</html>

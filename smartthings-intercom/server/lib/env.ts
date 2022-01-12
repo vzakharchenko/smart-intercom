@@ -2,10 +2,11 @@ import fs from 'fs';
 
 export type ConfigServer = {
     port: number,
+    ssdpJob:string
+    checkJob:string
 }
 export type ConfigSmartthings = {
     port:number,
-    timeout:number,
     deviceIp?:string,
     appId?:string,
     secret?:string
@@ -24,6 +25,8 @@ export async function config(): Promise<ConfigJson> {
     const configJson:ConfigJson = {
         server: {
             port: 8099,
+            ssdpJob: "0 */5 * * * *",
+            checkJob: "0 */2 * * * *"
         },
         smartapp: [
             'https://graph.api.smartthings.com',
@@ -34,7 +37,6 @@ export async function config(): Promise<ConfigJson> {
         ],
         smartthings:{
             port:8098,
-            timeout:180000,
         }
     };
     const defaultConfigFile = `${process.env.HOME}/config/intercomConfig.json`;
@@ -70,16 +72,20 @@ export async function config(): Promise<ConfigJson> {
     if (!configJson.server) {
         configJson.server = {
             port: 8099,
+            checkJob: "0 */2 * * * *",
+            ssdpJob: "0 */5 * * * *"
         };
+    }
+    if (!configJson.server.ssdpJob) {
+        configJson.server.ssdpJob = "0 */5 * * * *";
+    }
+    if (!configJson.server.checkJob) {
+        configJson.server.checkJob = "0 */2 * * * *";
     }
     if (!configJson.smartthings) {
         configJson.smartthings = {
             port:8098,
-            timeout:180000,
         };
-    }
-    if (!configJson.smartthings.timeout){
-        configJson.smartthings.timeout=180000;
     }
     if (!configJson.smartapp) {
         configJson.smartapp = [
