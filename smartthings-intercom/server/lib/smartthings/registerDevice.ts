@@ -1,6 +1,7 @@
-import { deviceInit } from './smartthingsConnection';
+import {config, saveConfig} from '../env';
+
+import {deviceInit} from './smartthingsConnection';
 import {startApplication} from "./ServiceBackend";
-import { config, saveConfig } from '../env';
 
 
 export type SuccessCallback = (currentShard:string)=>Promise<void>|void;
@@ -8,16 +9,16 @@ export type SuccessCallback = (currentShard:string)=>Promise<void>|void;
 export async function checkShard(shards:string[], currentShard:string, appId:string, secret:string, successCallback:SuccessCallback) {
   if (currentShard) {
     try {
-      console.log("test Shard "+currentShard);
+      console.log(`test Shard ${currentShard}`);
       await deviceInit(currentShard, appId, secret);
       await successCallback(currentShard);
-    } catch (ex:any){
-      console.log("test Shard error"+ex.message, ex);
+    } catch (ex:any) {
+      console.log(`test Shard error${ex.message}`, ex);
       const nextShard = shards.pop();
-      if (nextShard){
+      if (nextShard) {
         await checkShard(shards, nextShard, appId, secret, successCallback);
       } else {
-        await successCallback("")
+        await successCallback("");
       }
     }
   } else {
@@ -26,9 +27,9 @@ export async function checkShard(shards:string[], currentShard:string, appId:str
 }
 
 export async function saveSmartThingDeviceInfo(req:any, res:any) {
-  const curConfig = { ... await config() };
-  const { smartthings, smartapp } = curConfig;
-  const { appId, secret, deviceIp, label  } = req.query;
+  const curConfig = {...await config()};
+  const {smartthings, smartapp} = curConfig;
+  const {appId, secret, deviceIp, label} = req.query;
   smartthings.appId = appId;
   smartthings.secret = secret;
   smartthings.label = label;
@@ -39,7 +40,7 @@ export async function saveSmartThingDeviceInfo(req:any, res:any) {
     smartthings.shard = currentShard;
     await saveConfig(curConfig);
     await startApplication();
-    res.end(JSON.stringify({ status: 'OK' }));
+    res.end(JSON.stringify({status: 'OK'}));
   });
 }
 

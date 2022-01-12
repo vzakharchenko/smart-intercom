@@ -1,5 +1,6 @@
-import { apiGateWayInit } from './smartthings';
-import { config } from '../env';
+import {config} from '../env';
+
+import {apiGateWayInit} from './smartthings';
 
 export type InitData = {
   initialization: number,
@@ -7,7 +8,7 @@ export type InitData = {
 
 
 async function smartthingsInit0(initData:InitData, shard:string, appId:string, secret:string) {
- return await apiGateWayInit(initData, appId, secret, shard)
+  return await apiGateWayInit(initData, appId, secret, shard);
 }
 
 function getInitData():InitData {
@@ -18,11 +19,11 @@ function getInitData():InitData {
 
 export async function smartthingsInit() {
   const initData = getInitData();
-  const { smartthings } = await config();
-  if (!smartthings.shard || !smartthings.appId || !smartthings.secret){
-    throw new Error("Application does not initialized. Please install smartthings smartapp first")
+  const {smartthings} = await config();
+  if (!smartthings.shard || !smartthings.appId || !smartthings.secret) {
+    throw new Error("Application does not initialized. Please install smartthings smartapp first");
   }
-  return await smartthingsInit0(initData, smartthings.shard, smartthings.appId, smartthings.secret)
+  return await smartthingsInit0(initData, smartthings.shard, smartthings.appId, smartthings.secret);
 }
 
 export async function deviceInit(shard:string, appId:string, secret:string) {

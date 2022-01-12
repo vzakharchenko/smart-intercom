@@ -1,6 +1,6 @@
 {
   "name": "intercom-server",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "intercom server",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "prestart": "npm run build",
     "start": "node index.js",
     "lint": "eslint --quiet --ext .ts index.ts",
-    "lint:fix": "eslint --fix --quiet --ext .ts index.ts"
+    "lint:fix": "eslint --fix --quiet --ext .ts index.ts lib"
   },
   "repository": {
     "type": "git",

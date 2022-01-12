@@ -39,7 +39,7 @@ config().then(async (currentConfig:ConfigJson) => {
     console.info(`HTTP intercom listening on port ${port}`);
   });
   const deviceIp = await findSSDP();
-  if (currentConfig.smartthings.deviceIp !== deviceIp) {
+  if (deviceIp && deviceIp !== '' && currentConfig.smartthings.deviceIp !== deviceIp) {
     // @ts-ignore
     currentConfig.smartthings.deviceIp = deviceIp;
     await saveConfig(currentConfig);

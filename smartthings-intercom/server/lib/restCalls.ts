@@ -1,4 +1,4 @@
-import fetch, { Method } from 'axios';
+import fetch, {Method} from 'axios';
 
 fetch.interceptors.response.use((response:any) => response, (error:any) => error);
 
